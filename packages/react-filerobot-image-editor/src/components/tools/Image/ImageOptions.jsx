@@ -94,6 +94,10 @@ const ImageOptions = () => {
         if (file.type.startsWith('image/')) {
           const img = new Image();
           img.onload = () => {
+            if(img.height > 800) {
+              console.log("Please choose images with height smaller than 800px.");
+              return;
+            }  
             addImgScaled(img);
             URL.revokeObjectURL(file);
             hideLoaderAfterDone(filesLength);
